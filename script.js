@@ -1,3 +1,4 @@
+let startX;
 
 const grid = document.querySelector('.grid');
 const scoreDisplay = document.querySelector('#score');
@@ -188,3 +189,30 @@ function changeDirection (){
 function reiniciar (){
     window.location.reload();
 }
+
+
+// Adicionando eventos de toque
+grid.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    let touch = e.touches[0];
+    startX = touch.pageX;
+}, false);
+
+grid.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    let touch = e.touches[0];
+    if (touch.pageX < startX) {
+        if(currentPosition[0] > 0){
+            currentPosition[0] -= 10
+            drawUser()
+        }
+    } else if (touch.pageX > startX) {
+        if(currentPosition[0] < (boardWidth - blockWidth)){
+            currentPosition[0] += 10
+            drawUser()
+        }
+    }
+    startX = touch.pageX;
+}, false);
+
+document.addEventListener('keydown', moveUser);
