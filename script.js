@@ -203,12 +203,12 @@ grid.addEventListener('touchmove', function(e) {
     let touch = e.touches[0];
     if (touch.pageX < startX) {
         if(currentPosition[0] > 0){
-            currentPosition[0] -= 10
+            currentPosition[0] -= 5
             drawUser()
         }
     } else if (touch.pageX > startX) {
         if(currentPosition[0] < (boardWidth - blockWidth)){
-            currentPosition[0] += 10
+            currentPosition[0] += 5
             drawUser()
         }
     }
